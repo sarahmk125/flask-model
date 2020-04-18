@@ -8,6 +8,7 @@ from flask import Blueprint
 main = Blueprint('main', __name__)
 db = SQLAlchemy()
 
+
 def create_app():
     from . import models, blueprints
 

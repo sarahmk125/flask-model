@@ -1,19 +1,22 @@
 import os
-import app.utils.constants as constants
 
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from flask import Blueprint
 
 
-app = Flask(__name__)
-
-# Configure the DB
-basedir = os.path.abspath(os.path.dirname(__file__))
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'data.sqlite')
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
+main = Blueprint('main', __name__)
 db = SQLAlchemy()
-db.init_app(app)
+
+def create_app():
+    from . import models, blueprints
+
+    app = Flask(__name__)
+
+    models.init_app(app, db)
+    blueprints.init_app(app, main)
+
+    return app
 
 
 # # Create all db tables
@@ -23,15 +26,7 @@ db.init_app(app)
 #     from models import Model, ModelParameter
 #     db.create_all()
 
-@app.shell_context_processor
-def make_shell_context():
-    return dict(db=db)
 
-
-@app.route("/")
-def hello():
-    return "Welcome to Flask!"
-
-
-if __name__ == "__name__":
-    app.run(debug=constants.DEBUG)
+# @app.shell_context_processor
+# def make_shell_context():
+#     return dict(db=db)

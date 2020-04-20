@@ -3,3 +3,5 @@ boto3==1.9.248
 pandas==0.25.0
 joblib==0.13.2
 flask-sqlalchemy==2.4.1
+flask-wtf==0.14.3
+wtforms==2.2.1

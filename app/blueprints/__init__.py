@@ -1,4 +1,5 @@
-from app.blueprints import views
+from app.blueprints import home
+from app.blueprints import model
 
 
 def init_app(app, blueprint):

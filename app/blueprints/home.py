@@ -5,5 +5,5 @@ from flask import redirect, url_for
 
 
 @main.route('/')
-def hello():
-    return "Welcome to Flask!"
+def home():
+    return render_template('home.html')

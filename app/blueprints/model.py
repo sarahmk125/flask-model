@@ -1,7 +1,9 @@
 from app import main
+from app import db
 from app.forms.model_forms import AddModelForm
 from flask import render_template
 from flask import redirect, url_for
+from app.models.models import FinancialModel
 
 
 @main.route('/add-model', methods=['GET', 'POST'])
@@ -11,9 +13,24 @@ def add_model():
     unique_name = None
     form = AddModelForm()
     if form.validate_on_submit():
-        name = form.name.data
-        version = form.version.data
-        unique_name = form.unique_name.data
+        # Need to make sure these are required?
+        # Construct the model
+        financial_model = FinancialModel(
+            name=form.name.data,
+            version=form.version.data,
+            unique_name=form.unique_name.data
+        )
+
+        # Save the model to the DB
+        db.session.add(financial_model)
+        db.session.commit()
+
         return redirect(url_for('main.add_model'))
 
     return render_template('add_model.html', form=form)
+
+
+@main.route('/view-models', methods=['GET'])
+def view_models():
+    all_models = FinancialModel.query.all()
+    return render_template('view_models.html', data=all_models)

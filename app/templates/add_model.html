@@ -1,7 +1,14 @@
-<form method="POST">
-    {{ form.hidden_tag() }}
-    <br>{{ form.name.label }} {{ form.name() }}
-    <br>{{ form.version.label }} {{ form.version() }}
-    <br>{{ form.unique_name.label }} {{ form.unique_name() }}
-    <br>{{ form.submit() }}
-</form>
+<!doctype html>
+<html>
+<body>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        <br>{{ form.name.label }} {{ form.name() }}
+        <br>{{ form.version.label }} {{ form.version() }}
+        <br>{{ form.unique_name.label }} {{ form.unique_name() }}
+        <br>{{ form.submit() }}
+    </form>
+<br><a href="{{ url_for('main.home') }}"><button>Home</button></a>
+<br><a href="{{ url_for('main.view_models') }}"><button>View Models</button></a>
+</body>
+</html>

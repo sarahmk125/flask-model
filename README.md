@@ -4,6 +4,7 @@ This is a simple flask project to organize financial models with parameters that
 
 To start:
 - `pip install -r requirements.txt`
+- create `app/utils/secrets.py` which contains `FLASK_SECRET_STRING`, any string of your choosing
 - `flask run`
 
 Implemented:

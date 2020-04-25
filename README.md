@@ -40,3 +40,7 @@ Future implementation:
 - Login by invite / remove signup ability
 - More intuitive functionality (if you add something, you should have the ability to delete it, right?)
 - Better UI (and not barely rudimentary HTML...)
+
+#### Resources
+https://linuxacademy.com/blog/linux-academy/deploying-a-containerized-flask-application-with-aws-ecs-and-docker/
+https://www.digitalocean.com/community/tutorials/how-to-add-authentication-to-your-app-with-flask-login

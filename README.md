@@ -14,7 +14,7 @@ To start in Docker:
 - Build the image: `sudo docker build -t flask-model .`
 - Run the app: `sudo docker run -d --name flask-model -p 5000:5000 flask-model`
 
-To push to AWS:To setup AWS:
+To setup AWS:
 - Install AWS CLI
 - Authenticate docker: `aws ecr get-login-password --region us-east-1 | sudo docker login --username AWS --password-stdin [ACCOUNT_ID].dkr.ecr.us-east-1.amazonaws.com`
 - Make sure an ECR repo exists. If not, create one (through CLI: `aws ecr create-repository --region us-east-1 --repository-name flask-model`)

@@ -1,12 +1,13 @@
 from app import main
 from app import db
 from app.forms.model_forms import AddModelForm
-from flask import render_template
-from flask import redirect, url_for
+from flask import redirect, url_for, render_template
+from flask_login import login_required
 from app.models.models import FinancialModel
 
 
 @main.route('/add-model', methods=['GET', 'POST'])
+@login_required
 def add_model():
     name = None
     version = None
@@ -31,6 +32,7 @@ def add_model():
 
 
 @main.route('/view-models', methods=['GET'])
+@login_required
 def view_models():
     all_models = FinancialModel.query.all()
     return render_template('view_models.html', data=all_models)

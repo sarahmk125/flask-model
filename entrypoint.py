@@ -6,4 +6,4 @@ app = create_app()
 
 
 if __name__ == "__name__":
-    app.run(debug=constants.DEBUG)
+    app.run(host='0.0.0.0', port=3000, debug=constants.DEBUG)

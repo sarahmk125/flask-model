@@ -1,5 +1,6 @@
 import os
 from app.models.models import FinancialModel, ModelParameter
+from app.models.users import User
 
 
 def init_app(app, db):

@@ -22,7 +22,7 @@ To push to AWS:To setup AWS:
 To push to AWS:
 - Make sure you built the docker image locally
 - Tag the model: `sudo docker tag flask-model [ACCOUNT_ID].dkr.ecr.us-east-1.amazonaws.com/flask-model`
-- Push the image: `sudo docker push 481657068003.dkr.ecr.us-east-1.amazonaws.com/flask-model`
+- Push the image: `sudo docker push [ACCOUNT_ID].dkr.ecr.us-east-1.amazonaws.com/flask-model`
 
 ### Project Status
 

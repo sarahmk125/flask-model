@@ -63,8 +63,24 @@ def add_model_parameter():
     return render_template('add_model_parameter.html', form=form)
 
 
+@main.route('/clear-models', methods=['GET', 'POST'])
+@login_required
+def clear_models():
+    db.session.query(FinancialModel).delete()
+    db.session.query(ModelParameter).delete()
+    db.session.commit()
+    return redirect(url_for('main.home'))
+
+
 @main.route('/view-models', methods=['GET'])
 @login_required
 def view_models():
     all_models = FinancialModel.query.all()
     return render_template('view_models.html', data=all_models)
+
+
+@main.route('/view-model-parameters', methods=['GET'])
+@login_required
+def view_model_parameters():
+    all_parameters = ModelParameter.query.all()
+    return render_template('view_model_parameters.html', data=all_parameters)

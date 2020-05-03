@@ -15,5 +15,11 @@
             </div>
             <br><button class="button is-block is-info is-large is-fullwidth">Sign Up</button>
         </form>
+        <a href="{{ url_for('auth.login') }}">
+            <button class="button is-block is-info is-large is-fullwidth"> Already have an account? Login</button>
+        </a>
+        <br><a href="{{ url_for('main.home') }}">
+            <button class="button is-block is-info is-large is-fullwidth"> Go Home</button>
+        </a>
     </div>
 </div>

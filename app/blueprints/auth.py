@@ -1,3 +1,5 @@
+import logging
+
 from app import auth
 from app import db
 from app.models.users import User
@@ -17,6 +19,8 @@ def login_post():
     email = request.form.get('email')
     password = request.form.get('password')
 
+    logging.info(f'[Blueprint.Auth.login_post] Attempting to log in user {email}...')
+
     # Get the user and check if exists (they should, on login) and check auth
     user = User.query.filter_by(email=email).first()
     if password and user:
@@ -25,8 +29,8 @@ def login_post():
         password_check = None
 
     if not user or not password_check:
-        # NOTE: Display error here
-        return redirect(url_for('auth.login'))
+        flash("Incorrect email or password.")
+        return render_template('login.html')
 
     # Login successfull; actually login and go home
     login_user(user)
@@ -44,12 +48,13 @@ def signup_post():
     email = request.form.get('email')
     username = request.form.get('username')
     password = request.form.get('password')
-    print(email)
-    print(username)
+
+    logging.info(f'[Blueprint.Auth.signup_post] Attempting to signup user {email}...')
 
     # Check to see if the user already exists
     if User.query.filter_by(email=email).first():
-        # NOTE: Display error here eventually
+        logging.info(f'[Blueprint.Auth.signup_post] User with email {email} already exists.')
+        flash('User under that email already exists.')
         return redirect(url_for('auth.signup'))
 
     # User does not exist under current email
@@ -64,5 +69,7 @@ def signup_post():
 @auth.route('/logout')
 @login_required
 def logout():
+    logging.info('[Blueprint.Auth.logout] Logging out current user...')
+
     logout_user()
     return redirect(url_for('auth.login'))

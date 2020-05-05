@@ -1,0 +1,17 @@
+<html>
+  <head>
+    <style>
+      .alert-error {
+        padding: 8px;
+        background-color: rgb(255, 182, 182);
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+    {% for message in get_flashed_messages() %}
+      <div class="alert-error">Error: {{ message }}</div>
+    {% endfor %}
+  </body>
+</html>
+{% block content %}{% endblock %}

@@ -1,4 +1,6 @@
 <!doctype html>
+{% extends "error_template.html" %}
+{% block content %}
 <html>
 <body>
     <form method="POST">
@@ -14,3 +16,4 @@
 <br><a href="{{ url_for('main.clear_models') }}"><button>Clear All Models</button></a>
 </body>
 </html>
+{% endblock %}

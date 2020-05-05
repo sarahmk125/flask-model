@@ -2,10 +2,12 @@ import os
 
 from flask import Flask
 import app.utils.secrets as secrets
+import app.utils.constants as constants
 
 from flask_sqlalchemy import SQLAlchemy
 from flask import Blueprint
 from flask_login import LoginManager
+from flask_log import Logging
 
 
 main = Blueprint('main', __name__)
@@ -17,6 +19,10 @@ def create_app():
     from . import models, blueprints
 
     app = Flask(__name__)
+
+    # Init logger
+    app.config['FLASK_LOG_LEVEL'] = constants.LOG_LEVEL
+    flask_log = Logging(app)
 
     # Init models and blueprints
     app.config['SECRET_KEY'] = secrets.FLASK_SECRET_STRING

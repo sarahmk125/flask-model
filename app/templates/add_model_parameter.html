@@ -1,9 +1,16 @@
 <!doctype html>
+{% extends "error_template.html" %}
+{% block content %}
 <html>
 <body>
     <form method="POST">
         {{ form.hidden_tag() }}
-        <br>{{ form.model_unique_name.label }} {{ form.model_unique_name() }}
+        <br>{{ form.model_unique_name.label }}
+            <select name="model_unique_name">
+                {% for choice in form.model_unique_name.choices %}
+                    <option value="{{ choice[0] }}">{{ choice[1] }}</option>
+                {% endfor %}
+            </select>
         <br>{{ form.name.label }} {{ form.name() }}
         <br>{{ form.value.label }} {{ form.value() }}
         <br>{{ form.submit() }}
@@ -13,3 +20,4 @@
 <br><a href="{{ url_for('main.view_models') }}"><button>View Models</button></a>
 </body>
 </html>
+{% endblock %}

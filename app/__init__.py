@@ -14,6 +14,11 @@ main = Blueprint('main', __name__)
 auth = Blueprint('auth', __name__)
 db = SQLAlchemy()
 
+# Change this before deploying; this is a bit clunky.
+# NOTE: NEED TO FIGURE OUT SECURITY GROUPS
+# ENVIRONMENT = constants.PROD_ENVIRONMENT_NAME
+ENVIRONMENT = constants.DEV_ENVIRONMENT_NAME
+
 
 def create_app():
     from . import models, blueprints
@@ -26,7 +31,7 @@ def create_app():
 
     # Init models and blueprints
     app.config['SECRET_KEY'] = secrets.FLASK_SECRET_STRING
-    models.init_app(app, db)
+    models.init_app(app, db, ENVIRONMENT)
     blueprints.init_app(app, [auth, main])
 
     # Establish login procedure

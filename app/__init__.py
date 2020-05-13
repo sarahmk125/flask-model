@@ -16,8 +16,8 @@ db = SQLAlchemy()
 
 # Change this before deploying; this is a bit clunky.
 # NOTE: NEED TO FIGURE OUT SECURITY GROUPS
-# ENVIRONMENT = constants.PROD_ENVIRONMENT_NAME
-ENVIRONMENT = constants.DEV_ENVIRONMENT_NAME
+ENVIRONMENT = constants.PROD_ENVIRONMENT_NAME
+# ENVIRONMENT = constants.DEV_ENVIRONMENT_NAME
 
 
 def create_app():

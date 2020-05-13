@@ -28,6 +28,11 @@ To start in Docker, using the Makefile:
 - `sudo make build`
 - `sudo make run`
 
+### Other helpful Docker hints
+
+- To stop containers: `sudo docker stop $(docker ps -a -q)`
+- To prune all images and containers: `sudo docker image prune` and `sudo docker container prun`
+
 ### Releasing
 
 - Make sure you have AWS, your secrets, and your ECS setup as instructed above

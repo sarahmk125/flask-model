@@ -25,7 +25,7 @@ Secrets:
 
 To setup AWS:
 - Install AWS CLI, make sure you have ACCOUNT_ID file above
-- Authenticate docker: `sudo make auth`
+- Authenticate docker with ECS to double check it works: `make auth`
 - Make sure an ECR repo exists. If not, create one (through CLI: `aws ecr create-repository --region us-east-1 --repository-name flask-model`)
 
 ### Starting the App
@@ -35,20 +35,19 @@ To start on local:
 - `flask run`
 
 To start in Docker, using the Makefile:
-- `sudo make build`
-- `sudo make run`
+- `make build`
+- `make run`
 
 ### Other helpful Docker hints
 
-- To stop containers: `sudo make stop`
-- To prune all images and containers: `sudo docker image prune` and `sudo docker container prun`
+- To stop containers: `make stop`
+- To prune all images and containers: `docker image prune` and `docker container prun`
 
 ### Releasing
 
 - Make sure you have AWS, your secrets, and your ECS setup as instructed above
-- Run `make auth`. NOTE: here, `sudo make auth` doesn't work, but `make auth` does. To figure out why (?)
-- Run `sudo make release`
-- Force deploy: Go to the ECS cluster; check the box to the left of the cluster; click "UPDATE"; check "Force Deployment". Launch. More detailed instructions in resources below. NOTE: This only works this way if the cluster is setup to track the latest tag, which this is.
+- Run `make release`
+- Force deploy: Go to the ECS cluster; check the box to the left of the cluster; click "UPDATE"; check "Force Deployment". Skip to review, and submit. More detailed instructions in resources below. NOTE: This only works this way if the cluster is setup to track the latest tag, which this is.
 - Celebrate! (Hopefully)
 
 ## Resources

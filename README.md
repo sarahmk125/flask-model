@@ -10,8 +10,18 @@ Requirements:
 - Install Docker
 
 Secrets:
-- create `app/utils/secrets.py` which contains `FLASK_SECRET_STRING`, any string of your choosing
-- create a file `ACCOUNT_ID` which contains the AWS account ID where ECS is located
+- copy `app/utils/secrets_example.py` to `app/utils/secrets.py` and set the appropriate variables
+- copy `.env_example` to `.env` and set the appropriate variables
+- create the folder `app/.aws/`
+    - In that folder, create a file called `config` (no extension), which contains:
+        ```
+        region = [YOUR DEFAULT REGION]
+        ```
+    - In that folder, create a file called `credentials` (no extension), which contains:
+        ```
+        aws_access_key_id = [YOUR AWS ACCESS KEY ID]
+        aws_secret_access_key = [YOUR AWS SECRET ACCESS KEY]
+        ```
 
 To setup AWS:
 - Install AWS CLI, make sure you have ACCOUNT_ID file above
@@ -30,13 +40,14 @@ To start in Docker, using the Makefile:
 
 ### Other helpful Docker hints
 
-- To stop containers: `sudo docker stop $(docker ps -a -q)`
+- To stop containers: `sudo make stop`
 - To prune all images and containers: `sudo docker image prune` and `sudo docker container prun`
 
 ### Releasing
 
 - Make sure you have AWS, your secrets, and your ECS setup as instructed above
-- Run `sudo make release`; NOTE: You may need to authenticate first by running `sudo make auth`.
+- Run `make auth`. NOTE: here, `sudo make auth` doesn't work, but `make auth` does. To figure out why (?)
+- Run `sudo make release`
 - Force deploy: Go to the ECS cluster; check the box to the left of the cluster; click "UPDATE"; check "Force Deployment". Launch. More detailed instructions in resources below. NOTE: This only works this way if the cluster is setup to track the latest tag, which this is.
 - Celebrate! (Hopefully)
 

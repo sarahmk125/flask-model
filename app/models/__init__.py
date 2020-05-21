@@ -14,8 +14,8 @@ def init_app(app, db, environment):
         app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'data.sqlite')
         app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     else:
-        app.config['SQLALCHEMY_DATABASE_URI'] = f'postgres://{secrets.PROD_POSTGRES_USER}:{secrets.PROD_POSTGRES_PASS}@{secrets.PROD_POSTGRES_HOST}:{secrets.PROD_POSTGRES_PORT}/postgres'
-        app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+        app.config['SQLALCHEMY_DATABASE_URI'] = f'postgresql://{secrets.PROD_POSTGRES_USER}:{secrets.PROD_POSTGRES_PASS}@{secrets.PROD_POSTGRES_HOST}:{secrets.PROD_POSTGRES_PORT}/postgres'
+        app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 
     db.init_app(app)
     with app.app_context():

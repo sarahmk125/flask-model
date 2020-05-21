@@ -8,3 +8,4 @@ wtforms==2.2.1
 flask-login==0.4.0
 werkzeug==1.0.1
 flask-log==0.1.0
+psycopg2==2.7.3.2

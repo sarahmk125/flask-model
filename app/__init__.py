@@ -15,7 +15,7 @@ auth = Blueprint('auth', __name__)
 db = SQLAlchemy()
 
 # Change this before deploying; this is a bit clunky.
-# NOTE: NEED TO FIGURE OUT SECURITY GROUPS
+# NOTE: This can be cleaner.
 ENVIRONMENT = constants.PROD_ENVIRONMENT_NAME
 # ENVIRONMENT = constants.DEV_ENVIRONMENT_NAME
 

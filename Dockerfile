@@ -10,7 +10,13 @@ WORKDIR /app
 ADD . /app
 
 RUN pip install --upgrade pip && \
-    pip install -r requirements.txt
+    pip install -r requirements.txt && \
+    apt-get update -yqq && \
+    apt-get install curl zip unzip -yqq && \
+    curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && \
+    unzip awscliv2.zip && \
+    ./aws/install && \
+    export $(xargs < .env)
 
 EXPOSE 5000
 

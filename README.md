@@ -54,6 +54,7 @@ To signup a user (yourself included):
 - Make sure you have AWS, your secrets, and your ECS setup as instructed above
 - Run `make release`
 - Force deploy: Go to the ECS cluster; check the box to the left of the cluster; click "UPDATE"; check "Force Deployment". Skip to review, and submit. More detailed instructions in resources below. NOTE: This only works this way if the cluster is setup to track the latest tag, which this is.
+- Note: in the current setup, the ECS task IP changes upon each deploy. You will have to update the RDS security group to add the new IP. Comments on potential improvements below (using an elastic IP).
 - Celebrate! (Hopefully)
 
 ## Resources

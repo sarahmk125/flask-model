@@ -37,6 +37,15 @@ def login_post():
     return redirect(url_for('main.home'))
 
 
+@auth.route('/logout')
+@login_required
+def logout():
+    logging.info('[Blueprint.Auth.logout] Logging out current user...')
+
+    logout_user()
+    return redirect(url_for('auth.login'))
+
+
 # @auth.route('/signup', methods=['GET'])
 # def signup():
 #     return render_template('signup.html')
@@ -64,12 +73,3 @@ def login_post():
 #     db.session.commit()
 
 #     return redirect(url_for('auth.login'))
-
-
-@auth.route('/logout')
-@login_required
-def logout():
-    logging.info('[Blueprint.Auth.logout] Logging out current user...')
-
-    logout_user()
-    return redirect(url_for('auth.login'))

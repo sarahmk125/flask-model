@@ -14,7 +14,7 @@ main = Blueprint('main', __name__)
 auth = Blueprint('auth', __name__)
 db = SQLAlchemy()
 
-# Change this before deploying; this is a bit clunky.
+# Define the environment. DEV writes to a local SQL instance. Prod writes to the deployed RDS instance.
 # NOTE: This can be cleaner.
 ENVIRONMENT = constants.PROD_ENVIRONMENT_NAME
 # ENVIRONMENT = constants.DEV_ENVIRONMENT_NAME

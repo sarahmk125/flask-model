@@ -1,9 +1,19 @@
 
 build:
 	@docker build -t flask-model .
+	#@docker run -d --name flask-model -v app/.aws -p 5000:5000 flask-model
 
-run:
-	@docker run -d -v app/.aws -p 5000:5000 flask-model
+up:
+	@docker stop flask-model
+	@docker rm flask-model
+	@docker run -d --name flask-model -v app/.aws -p 5000:5000 flask-model
+
+# restart:
+# 	@docker stop $(shell docker ps -a -q)
+# 	@docker start flask-model
+
+# start:
+# 	@docker start flask-model
 
 stop:
 	@docker stop $(shell docker ps -a -q)

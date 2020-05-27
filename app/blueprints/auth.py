@@ -37,33 +37,33 @@ def login_post():
     return redirect(url_for('main.home'))
 
 
-@auth.route('/signup', methods=['GET'])
-def signup():
-    return render_template('signup.html')
+# @auth.route('/signup', methods=['GET'])
+# def signup():
+#     return render_template('signup.html')
 
 
-@auth.route('/signup', methods=['POST'])
-def signup_post():
-    # Make values required
-    email = request.form.get('email')
-    username = request.form.get('username')
-    password = request.form.get('password')
+# @auth.route('/signup', methods=['POST'])
+# def signup_post():
+#     # Make values required
+#     email = request.form.get('email')
+#     username = request.form.get('username')
+#     password = request.form.get('password')
 
-    logging.info(f'[Blueprint.Auth.signup_post] Attempting to signup user {email}...')
+#     logging.info(f'[Blueprint.Auth.signup_post] Attempting to signup user {email}...')
 
-    # Check to see if the user already exists
-    if User.query.filter_by(email=email).first():
-        logging.info(f'[Blueprint.Auth.signup_post] User with email {email} already exists.')
-        flash('User under that email already exists.')
-        return redirect(url_for('auth.signup'))
+#     # Check to see if the user already exists
+#     if User.query.filter_by(email=email).first():
+#         logging.info(f'[Blueprint.Auth.signup_post] User with email {email} already exists.')
+#         flash('User under that email already exists.')
+#         return redirect(url_for('auth.signup'))
 
-    # User does not exist under current email
-    new_user = User(email=email, username=username, password=generate_password_hash(password, method='sha256'))
+#     # User does not exist under current email
+#     new_user = User(email=email, username=username, password=generate_password_hash(password, method='sha256'))
 
-    db.session.add(new_user)
-    db.session.commit()
+#     db.session.add(new_user)
+#     db.session.commit()
 
-    return redirect(url_for('auth.login'))
+#     return redirect(url_for('auth.login'))
 
 
 @auth.route('/logout')

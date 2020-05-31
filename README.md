@@ -9,6 +9,8 @@ The setup of the flask app in this repo is integrated with:
 - AWS ECR to release new docker images
 - AWS ECS to run the images on an EC2 instance
 
+Youtub demo found here: https://www.youtube.com/watch?v=KTFzgbw43UQ&feature=youtu.be
+
 ## Getting Started
 
 ### Setup

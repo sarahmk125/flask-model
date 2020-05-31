@@ -2,6 +2,13 @@
 
 This is a simple flask project to organize financial models with parameters that can be managed by a technical person on an analytics team. The project aims to encourage financial modeling to occur outside of Excel, with ease of input. The project has the potential to grow to trigger retraining of models and saving model outputs to a data warehouse.
 
+The setup of the flask app in this repo is integrated with:
+- Docker to run the app
+- AWS CLI to push new images to the cloud and release new versions
+- AWS Postgres RDS instance to save the flask models' data
+- AWS ECR to release new docker images
+- AWS ECS to run the images on an EC2 instance
+
 ## Getting Started
 
 ### Setup
@@ -68,3 +75,5 @@ A few things that can be improved to make either the running or deploying of the
 - Include CI/CD tools like CircleCI to make the deployment of a new image easier
 - Improve environment handling, outside of the __init__ file in /app.
 - Use elastic IP for the ECS cluster so the signup flow can be re-exposed, without running a script offline for security.
+- Functionally, implement a backend with wrapper model retraining methods that can be filled with any model code.
+- Functionally, allow models to be private to a particular user, or exposed to all users.

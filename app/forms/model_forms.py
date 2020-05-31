@@ -8,7 +8,7 @@ from app.models.models import FinancialModel
 class AddModelForm(FlaskForm):
     name = StringField('Model name', validators=[Length(0, 256), DataRequired()])
     version = StringField('Version', validators=[Length(0, 8), DataRequired()])
-    
+
     submit = SubmitField('Submit')
 
 
@@ -22,5 +22,5 @@ class AddModelParameterForm(FlaskForm):
         super().__init__()
         if models:
             self.model_unique_name.choices = [(m.unique_name, m.unique_name) for m in models]
-    
+
     submit = SubmitField('Submit')

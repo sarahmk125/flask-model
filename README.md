@@ -1,6 +1,6 @@
 # flask-model
 
-This is a simple flask project to organize financial models with parameters that can be managed by a technical person on an analytics team. The project aims to encourage financial modeling to occur outside of Excel, with ease of input. The project has the potential to grow to trigger retraining of models and saving model outputs to a data warehouse.
+This is a flask project to organize financial models with parameters that can be managed by a technical person on an analytics team. The project aims to encourage financial modeling to occur outside of Excel, with ease of input. The project has the potential to grow to trigger retraining of models and saving model outputs to a data warehouse.
 
 The setup of the flask app in this repo is integrated with:
 - Docker to run the app

@@ -6,6 +6,6 @@ flask-sqlalchemy==2.4.1
 flask-wtf==0.14.3
 wtforms==2.2.1
 flask-login==0.4.0
-werkzeug==1.0.1
+werkzeug==2.2.3
 flask-log==0.1.0
 psycopg2==2.7.3.2

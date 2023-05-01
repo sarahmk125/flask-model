@@ -1,4 +1,4 @@
-flask==1.1.1
+flask==2.3.2
 boto3==1.9.248
 pandas==0.25.0
 joblib==0.13.2
